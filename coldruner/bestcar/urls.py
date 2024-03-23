@@ -2,5 +2,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('',views.index('bestcar.urls')),
+    path('',views.index),
+    path('bus/', views.bus)
 ]

@@ -20,5 +20,5 @@ from bestcar import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('bestcar.urls')),
+    path('', include('bestcar.urls')),
 ]
