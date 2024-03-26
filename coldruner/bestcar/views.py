@@ -15,24 +15,23 @@ def index(request):  # HttpRequest
     return render(request, 'bestcar/index.html',context=data)
 
 def about(request):
-    data = {'title': "О сайте"}
-    return render(request, 'bestcar/about.html', context=data)
+    return render(request, 'bestcar/about.html', {'title': 'О сайте',"menu": menu} )
 
 def bus_ride(request):
     data = {'title': 'На автобусе'}
-    return render(request, 'bestcar/bus_ride.html', context=data)
+    return render(request, 'bestcar/bus_ride.html',context=data)
 
 def trip_companion(request):
     data = {'title': 'С попутчиком'}
-    return render(request, 'bestcar/trip_companion.html', context=data)
+    return render(request, 'bestcar/trip_companion.html',context=data)
 
 def search(request):
     data = {'title': 'Искать'}
-    return render(request, 'bestcar/search.html', context=data)
+    return render(request, 'bestcar/search.html',context=data)
 
 def post(request):
     data = {'title': 'Опкбликовать поездку'}
-    return render(request, 'bestcar/post.html', context=data)
+    return render(request, 'bestcar/post.html',context=data)
 
 
 def page_not_found(request, exception):
