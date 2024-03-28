@@ -15,7 +15,8 @@ def index(request):  # HttpRequest
     return render(request, 'bestcar/index.html',context=data)
 
 def about(request):
-    return render(request, 'bestcar/about.html', {'title': 'О сайте',"menu": menu} )
+    return render(request, 'bestcar/about.html',
+                  {'title': 'О сайте',"menu": menu})
 
 def bus_ride(request):
     data = {'title': 'На автобусе'}
