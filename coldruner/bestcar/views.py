@@ -1,6 +1,9 @@
 from django.http import HttpResponse, HttpResponseNotFound
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
+
+
+from bestcar.models import *
 
 menu = [{'title':'О сайте', 'url_name':'about'},
        {'title':'На автобусе', 'url_name':'bus'},
@@ -31,7 +34,18 @@ def search(request):
     return render(request, 'bestcar/search.html',context=data)
 
 def post(request):
-    data = {'title': 'Опкбликовать поездку'}
+    if request.method == 'POST':
+       form = Publishing_a_tripForm(request.POST)
+       if form.is_valid():
+           try:
+               Publishing_a_trip.objects.create(**form.cleaned_data)  #form.save()
+               return redirect('home')
+           except:
+               form.add_error(None,'Ошибка добавления поездки')
+
+    else:
+        form = Publishing_a_tripForm()
+    data = {'form' : form, 'title': 'Опубликовать поездку'}
     return render(request, 'bestcar/post.html',context=data)
 
 
