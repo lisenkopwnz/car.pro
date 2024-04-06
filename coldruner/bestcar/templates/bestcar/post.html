@@ -9,8 +9,6 @@
 <form action="{% url 'post' %}" method="post">
     {% csrf_token %}
     {{ form.as_p}}
-
-
     <p><button type="submit">Отпраить</button>
 </form>
 

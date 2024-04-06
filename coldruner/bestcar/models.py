@@ -31,29 +31,22 @@ class Publishing_a_tripForm(forms.ModelForm):
         model = Publishing_a_trip
         fields = ['name', 'departure', 'arrival', 'models_auto', 'date_time', 'seating']
         widgets = { 'date_time': forms.DateTimeInput(attrs={'type':'datetime-local', 'class':'form-control'})
-
-
         }
-
 
     def clean_name(self):
         name = self.cleaned_data['name']
-        name = self.cleaned_data['name']
         if re.search(r'[^а-яА-ЯёЁ]',name):
             raise ValidationError('Поле должно содержать только русские символы')
-
         return name
 
     def clean_departure(self):
         departure = self.cleaned_data['departure']
         if re.search(r'[^а-яА-ЯёЁ]',departure):
             raise ValidationError('Поле должно содержать только русские символы')
-
         return departure
 
     def clean_arrival(self):
         arrival = self.cleaned_data['arrival']
         if re.search(r'[^а-яА-ЯёЁ]',arrival):
             raise ValidationError('Поле должно содержать только русские символы')
-
         return arrival
