@@ -8,7 +8,7 @@ urlpatterns = [
     path('bus/',BusRide.as_view(),name='bus'),
     path('companion/', TripComp.as_view(),name='companion'),
     path('search/',SearchTrip.as_view(), name='search'),
-    path('post', Post.as_view(), name='post'),
+    path('post/', Post.as_view(), name='post'),
     path('about/', views.about, name='about'),
 
 ]

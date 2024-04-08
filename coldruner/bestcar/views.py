@@ -2,6 +2,7 @@ from django.db.models import Q
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
+from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView
 
 from bestcar.forms import *
@@ -54,6 +55,7 @@ class SearchTrip(ListView):
 class Post(CreateView):
     form_class = Publishing_a_tripForm
     template_name = 'bestcar/post.html'
+    success_url = reverse_lazy('home')
     def get_context_data(self, *args, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Добавить поездку'

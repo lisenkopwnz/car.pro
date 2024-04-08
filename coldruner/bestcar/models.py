@@ -19,8 +19,14 @@ class Publishing_a_trip(models.Model):
     models_auto = models.CharField(max_length=100,verbose_name="Модель автомобиля")
     date_time = models.DateTimeField(verbose_name="Дата и время")
     seating = models.PositiveSmallIntegerField(verbose_name= 'Количество мест', choices=SEATING, default=1)
-    is_published = models.BooleanField(default=True)
+    cat = models.ForeignKey('Category',verbose_name="Катигория", on_delete=models.PROTECT)
 
+    def __str__(self):
+        return self.name
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=100,verbose_name="Выберите транспортное средство")
     def __str__(self):
         return self.name
 
@@ -29,7 +35,7 @@ class Publishing_a_tripForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
     class Meta:
         model = Publishing_a_trip
-        fields = ['name', 'departure', 'arrival', 'models_auto', 'date_time', 'seating']
+        fields = ['name', 'departure', 'arrival', 'models_auto', 'date_time', 'seating','cat']
         widgets = { 'date_time': forms.DateTimeInput(attrs={'type':'datetime-local', 'class':'form-control'})
         }
 
